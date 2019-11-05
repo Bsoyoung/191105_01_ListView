@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.example.a191105_01_listview.R
 import com.example.a191105_01_listview.datas.RoomData
 
@@ -26,8 +27,16 @@ class RoomDataAdapter(context: Context,resource:Int, list:ArrayList<RoomData>)
         var row = convertView
         if (row == null){
             row = inf?.inflate(R.layout.room_list_item,null)
-
         }
+
+        var roomData = mList?.get(position)
+
+        var priceTxt = row?.findViewById<TextView>(R.id.priceTxt)
+        var addressAndFloorTxt = row?.findViewById<TextView>(R.id.addressAndFloorTxt)
+
+        priceTxt?.text = roomData?.price.toString()
+        addressAndFloorTxt?.text = "${roomData?.address},${roomData?.floor} 층"
+
 
         return row!!
     }
